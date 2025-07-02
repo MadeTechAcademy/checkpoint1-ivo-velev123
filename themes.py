@@ -13,9 +13,16 @@ duties_list = [
     "Duty 12 Look to automate any manual tasks that are repeated, often using APIs.",
     "Duty 13 Accept ownership of changes; embody the DevOps culture of 'you build it, you run it', with a relentless focus on the user experience."
 ]
-def show_duties_list():
-    for duty in duties_list:
-        print("{0}\n".format(duty))
+# def show_duties_list():
+#     for duty in duties_list:
+#         print("{0}\n".format(duty))
+
+def show_duties_in_html():
+    with open("duties.html", "w") as f:
+        f.write("<h1 style='text-decoration: underline'>This is a list of the duties:</h1>\n<ul>\n")
+        for duty in duties_list:
+            f.write(f"<li>{duty}</li>\n")
+        f.write(f"</ul>")
 
 if __name__=="__main__":
     user_input = input("""
@@ -24,4 +31,4 @@ if __name__=="__main__":
     Enter your choice:
     """)
     if user_input == '1':
-        show_duties_list()
+        show_duties_in_html()
