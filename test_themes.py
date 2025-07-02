@@ -1,4 +1,3 @@
-from themes import x2
-def testIt():
-    #assert len(x2)>10
-    assert True is True
+from themes import duties_list
+def test_duties_list():
+    assert len(duties_list) == 13
