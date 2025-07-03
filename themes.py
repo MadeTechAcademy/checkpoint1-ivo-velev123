@@ -121,5 +121,8 @@ if __name__=="__main__":
     Enter your choice:
     """)
     show_duties_in_html(user_input)
-    user_input2 = input("Press (1) to view the file in the browser")
+    user_input2 = input("""
+    Press (1) to view the file in the browser\n
+    Press (2) to exit
+    """)
     open_in_browser(user_input, user_input2)
