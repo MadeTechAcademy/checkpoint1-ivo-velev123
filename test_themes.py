@@ -19,3 +19,7 @@ def test_output_to_html():
     show_duties_in_html("4")
     with open("comparison_files/houstonComparison.html", "r") as comparison_file, open("output_files/houstonDuties.html") as output_file:
         assert comparison_file.readlines() == output_file.readlines()
+
+    show_duties_in_html("5")
+    with open("comparison_files/goingDeeperComparison.html", "r") as comparison_file, open("output_files/goingDeeperDuties.html") as output_file:
+        assert comparison_file.readlines() == output_file.readlines()
