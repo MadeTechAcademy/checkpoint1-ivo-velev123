@@ -14,7 +14,8 @@ duties_list = [
     "Duty 13 Accept ownership of changes; embody the DevOps culture of 'you build it, you run it', with a relentless focus on the user experience."
 ]
 
-bootcamp_duties = [0,1,2,3,12]
+bootcamp_duties = [0, 1, 2, 3, 12]
+automate_duties = [4, 6, 9]
 
 # def show_duties_list():
 #     for duty in duties_list:
@@ -31,6 +32,12 @@ def show_duties_in_html(user_input):
         with open("output_files/bootCampDuties.html", "w") as f:
             f.write("<h1 style='text-decoration: underline'>This is a list of the duties for bootcamp:</h1>\n<ul>\n")
             for duty in bootcamp_duties:
+                f.write(f"<li>{duties_list[duty]}</li>\n")
+            f.write(f"</ul>")
+    elif user_input == "3":
+        with open("output_files/automateDuties.html", "w") as f:
+            f.write("<h1 style='text-decoration: underline'>This is a list of the duties for automate:</h1>\n<ul>\n")
+            for duty in automate_duties:
                 f.write(f"<li>{duties_list[duty]}</li>\n")
             f.write(f"</ul>")
 
