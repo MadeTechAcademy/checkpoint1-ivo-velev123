@@ -13,62 +13,84 @@ duties_list = [
     "Duty 12 Look to automate any manual tasks that are repeated, often using APIs.",
     "Duty 13 Accept ownership of changes; embody the DevOps culture of 'you build it, you run it', with a relentless focus on the user experience."
 ]
+duties_dictionary = {
+"duties" : [0,1,2,3,4,5,6,7,8,9,10,11,12],
+"bootcamp" : [0, 1, 2, 3, 12],
+"automate" : [4, 6, 9],
+"houstonPrepareToLaunch" : [5, 6, 9, 11],
+"goingDeeper" : [10],
+"assemble" : [7],
+"callSecurity" : [8]
+}
 
-bootcamp_duties = [0, 1, 2, 3, 12]
-automate_duties = [4, 6, 9]
-houston_duties = [5, 6, 9, 11]
-going_deeper_duties = [10]
-assemble_duties = [7]
-call_security_duties = [8]
+themes_list = ["duties","bootcamp", "automate", "houstonPrepareToLaunch", "goingDeeper", "assemble", "callSecurity"]
 
 # def show_duties_list():
 #     for duty in duties_list:
 #         print("{0}\n".format(duty))
 
 def show_duties_in_html(user_input):
-    if user_input == "1":
-        with open("output_files/duties.html", "w") as f:
-            f.write("<h1 style='text-decoration: underline'>This is a list of the duties:</h1>\n<ul>\n")
-            for duty in duties_list:
-                f.write(f"<li>{duty}</li>\n")
-            f.write("</ul>")
-    elif user_input == "2":
-        with open("output_files/bootCampDuties.html", "w") as f:
-            f.write("<h1 style='text-decoration: underline'>This is a list of the duties for bootcamp:</h1>\n<ul>\n")
-            for duty in bootcamp_duties:
-                f.write(f"<li>{duties_list[duty]}</li>\n")
-            f.write("</ul>")
-    elif user_input == "3":
-        with open("output_files/automateDuties.html", "w") as f:
-            f.write("<h1 style='text-decoration: underline'>This is a list of the duties for automate:</h1>\n<ul>\n")
-            for duty in automate_duties:
-                f.write(f"<li>{duties_list[duty]}</li>\n")
-            f.write("</ul>")
-    elif user_input == "4":
-        with open("output_files/houstonDuties.html", "w") as f:
-            f.write("<h1 style='text-decoration: underline'>This is a list of the duties for houston prepare to launch:</h1>\n<ul>\n")
-            for duty in houston_duties:
-                f.write(f"<li>{duties_list[duty]}</li>\n")
-            f.write("</ul>")
-    elif user_input == "5":
-        with open("output_files/goingDeeperDuties.html", "w") as f:
-            f.write("<h1 style='text-decoration: underline'>This is a list of the duties for going deeper:</h1>\n<ul>\n")
-            for duty in going_deeper_duties:
-                f.write(f"<li>{duties_list[duty]}</li>\n")
-            f.write("</ul>")
-    elif user_input == "6":
-        with open("output_files/assembleDuties.html", "w") as f:
-            f.write("<h1 style='text-decoration: underline'>This is a list of the duties for assemble:</h1>\n<ul>\n")
-            for duty in assemble_duties:
-                f.write(f"<li>{duties_list[duty]}</li>\n")
-            f.write("</ul>")
-    elif user_input == "7":
-        with open("output_files/callSecurityDuties.html", "w") as f:
-            f.write("<h1 style='text-decoration: underline'>This is a list of the duties for call security:</h1>\n<ul>\n")
-            for duty in call_security_duties:
-                f.write(f"<li>{duties_list[duty]}</li>\n")
-            f.write("</ul>")
-
+    selected_theme = int(user_input) - 1
+    with open(f"output_files/{themes_list[selected_theme]}.html", "w") as f:
+        if selected_theme > 0:
+            if selected_theme == 3 or selected_theme == 4 or selected_theme == 6:
+                title = ""
+                for char in themes_list[selected_theme]:
+                    if char.isupper():
+                        title += " " + char.lower()
+                    else:
+                        title += char
+                f.write(f"<h1 style='text-decoration: underline'>This is a list of the duties for {title}:</h1>\n<ul>\n")
+            else:
+                f.write(f"<h1 style='text-decoration: underline'>This is a list of the duties for {themes_list[selected_theme]}:</h1>\n<ul>\n")
+        else:
+            f.write(f"<h1 style='text-decoration: underline'>This is a list of the {themes_list[selected_theme]}:</h1>\n<ul>\n")
+        for duty in duties_dictionary[themes_list[selected_theme]]:
+            f.write(f"<li>{duties_list[duty]}</li>\n")
+        f.write("</ul>")
+        
+    # if user_input == "1":
+    #     with open("output_files/duties.html", "w") as f:
+    #         f.write("<h1 style='text-decoration: underline'>This is a list of the duties:</h1>\n<ul>\n")
+    #         for duty in duties_list:
+    #             f.write(f"<li>{duty}</li>\n")
+    #         f.write("</ul>")
+    # elif user_input == "2":
+    #     with open("output_files/bootCampDuties.html", "w") as f:
+    #         f.write("<h1 style='text-decoration: underline'>This is a list of the duties for bootcamp:</h1>\n<ul>\n")
+    #         for duty in bootcamp_duties:
+    #             f.write(f"<li>{duties_list[duty]}</li>\n")
+    #         f.write("</ul>")
+    # elif user_input == "3":
+    #     with open("output_files/automateDuties.html", "w") as f:
+    #         f.write("<h1 style='text-decoration: underline'>This is a list of the duties for automate:</h1>\n<ul>\n")
+    #         for duty in automate_duties:
+    #             f.write(f"<li>{duties_list[duty]}</li>\n")
+    #         f.write("</ul>")
+    # elif user_input == "4":
+    #     with open("output_files/houstonDuties.html", "w") as f:
+    #         f.write("<h1 style='text-decoration: underline'>This is a list of the duties for houston prepare to launch:</h1>\n<ul>\n")
+    #         for duty in houston_duties:
+    #             f.write(f"<li>{duties_list[duty]}</li>\n")
+    #         f.write("</ul>")
+    # elif user_input == "5":
+    #     with open("output_files/goingDeeperDuties.html", "w") as f:
+    #         f.write("<h1 style='text-decoration: underline'>This is a list of the duties for going deeper:</h1>\n<ul>\n")
+    #         for duty in going_deeper_duties:
+    #             f.write(f"<li>{duties_list[duty]}</li>\n")
+    #         f.write("</ul>")
+    # elif user_input == "6":
+    #     with open("output_files/assembleDuties.html", "w") as f:
+    #         f.write("<h1 style='text-decoration: underline'>This is a list of the duties for assemble:</h1>\n<ul>\n")
+    #         for duty in assemble_duties:
+    #             f.write(f"<li>{duties_list[duty]}</li>\n")
+    #         f.write("</ul>")
+    # elif user_input == "7":
+    #     with open("output_files/callSecurityDuties.html", "w") as f:
+    #         f.write("<h1 style='text-decoration: underline'>This is a list of the duties for call security:</h1>\n<ul>\n")
+    #         for duty in call_security_duties:
+    #             f.write(f"<li>{duties_list[duty]}</li>\n")
+    #         f.write("</ul>")
 
 if __name__=="__main__":
     user_input = input("""
