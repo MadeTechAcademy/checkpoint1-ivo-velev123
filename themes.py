@@ -104,7 +104,6 @@ def show_duties_in_html(user_input):
 def open_in_browser(user_input, user_input2):
     if user_input2 == "1":
         selected_theme = int(user_input) - 1
-        filelocation = f"output_files/{themes_list[selected_theme]}.html"
         filename = 'file:///'+os.getcwd()+'/' + f'output_files/{themes_list[selected_theme]}.html'
         webbrowser.open_new_tab(filename)
 
