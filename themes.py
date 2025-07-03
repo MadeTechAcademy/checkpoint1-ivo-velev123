@@ -18,6 +18,7 @@ bootcamp_duties = [0, 1, 2, 3, 12]
 automate_duties = [4, 6, 9]
 houston_duties = [5, 6, 9, 11]
 going_deeper_duties = [10]
+assemble_duties = [7]
 
 # def show_duties_list():
 #     for duty in duties_list:
@@ -52,6 +53,12 @@ def show_duties_in_html(user_input):
         with open("output_files/goingDeeperDuties.html", "w") as f:
             f.write("<h1 style='text-decoration: underline'>This is a list of the duties for going deeper:</h1>\n<ul>\n")
             for duty in going_deeper_duties:
+                f.write(f"<li>{duties_list[duty]}</li>\n")
+            f.write("</ul>")
+    elif user_input == "6":
+        with open("output_files/assembleDuties.html", "w") as f:
+            f.write("<h1 style='text-decoration: underline'>This is a list of the duties for assemble:</h1>\n<ul>\n")
+            for duty in assemble_duties:
                 f.write(f"<li>{duties_list[duty]}</li>\n")
             f.write("</ul>")
 
