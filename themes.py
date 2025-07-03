@@ -1,3 +1,6 @@
+import webbrowser
+import os
+
 duties_list = [
     "Duty 1 Script and code in at least one general purpose language and at least one domain-specific language to orchestrate infrastructure, follow test driven development and ensure appropriate test coverage.",
     "Duty 2 Initiate and facilitate knowledge sharing and technical collaboration with teams and individuals, with a focus on supporting development of team members.",
@@ -98,6 +101,13 @@ def show_duties_in_html(user_input):
     #             f.write(f"<li>{duties_list[duty]}</li>\n")
     #         f.write("</ul>")
 
+def open_in_browser(user_input, user_input2):
+    if user_input2 == "1":
+        selected_theme = int(user_input) - 1
+        filelocation = f"output_files/{themes_list[selected_theme]}.html"
+        filename = 'file:///'+os.getcwd()+'/' + f'output_files/{themes_list[selected_theme]}.html'
+        webbrowser.open_new_tab(filename)
+
 if __name__=="__main__":
     user_input = input("""
     Welcome to apprentice themes!\n
@@ -111,3 +121,5 @@ if __name__=="__main__":
     Enter your choice:
     """)
     show_duties_in_html(user_input)
+    user_input2 = input("Press (1) to view the file in the browser")
+    open_in_browser(user_input, user_input2)
