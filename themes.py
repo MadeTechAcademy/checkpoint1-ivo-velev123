@@ -16,6 +16,7 @@ duties_list = [
 
 bootcamp_duties = [0, 1, 2, 3, 12]
 automate_duties = [4, 6, 9]
+houston_duties = [5, 6, 9, 11]
 
 # def show_duties_list():
 #     for duty in duties_list:
@@ -27,25 +28,33 @@ def show_duties_in_html(user_input):
             f.write("<h1 style='text-decoration: underline'>This is a list of the duties:</h1>\n<ul>\n")
             for duty in duties_list:
                 f.write(f"<li>{duty}</li>\n")
-            f.write(f"</ul>")
+            f.write("</ul>")
     elif user_input == "2":
         with open("output_files/bootCampDuties.html", "w") as f:
             f.write("<h1 style='text-decoration: underline'>This is a list of the duties for bootcamp:</h1>\n<ul>\n")
             for duty in bootcamp_duties:
                 f.write(f"<li>{duties_list[duty]}</li>\n")
-            f.write(f"</ul>")
+            f.write("</ul>")
     elif user_input == "3":
         with open("output_files/automateDuties.html", "w") as f:
             f.write("<h1 style='text-decoration: underline'>This is a list of the duties for automate:</h1>\n<ul>\n")
             for duty in automate_duties:
                 f.write(f"<li>{duties_list[duty]}</li>\n")
-            f.write(f"</ul>")
+            f.write("</ul>")
+    elif user_input == "4":
+        with open("output_files/houstonDuties.html", "w") as f:
+            f.write("<h1 style='text-decoration: underline'>This is a list of the duties for houston prepare to launch:</h1>\n<ul>\n")
+            for duty in houston_duties:
+                f.write(f"<li>{duties_list[duty]}</li>\n")
+            f.write("</ul>")
 
 if __name__=="__main__":
     user_input = input("""
     Welcome to apprentice themes!\n
     Press (1) to list all the duties\n
-    Press (2) to list all duties\n
+    Press (2) to list bootcamp duties\n
+    Press (3) to list automate duties\n
+    Press (4) to list houston duties\n
     Enter your choice:
     """)
     show_duties_in_html(user_input)
