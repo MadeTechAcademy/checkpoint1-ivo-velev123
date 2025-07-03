@@ -11,3 +11,7 @@ def test_output_to_html():
     show_duties_in_html("2")
     with open("comparison_files/bootcampComparison.html", "r") as comparison_file, open("output_files/bootCampDuties.html", "r") as output_file:
         assert comparison_file.readlines() == output_file.readlines()
+
+    show_duties_in_html("3")
+    with open("comparison_files/automateComparison.html", "r") as comparison_file, open("output_files/automateDuties.html", "r") as output_file:
+        assert comparison_file.readlines() == output_file.readlines()
