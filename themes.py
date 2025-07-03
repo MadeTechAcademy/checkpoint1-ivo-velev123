@@ -13,22 +13,32 @@ duties_list = [
     "Duty 12 Look to automate any manual tasks that are repeated, often using APIs.",
     "Duty 13 Accept ownership of changes; embody the DevOps culture of 'you build it, you run it', with a relentless focus on the user experience."
 ]
+
+bootcamp_duties = [0,1,2,3,12]
+
 # def show_duties_list():
 #     for duty in duties_list:
 #         print("{0}\n".format(duty))
 
-def show_duties_in_html():
-    with open("output_files/duties.html", "w") as f:
-        f.write("<h1 style='text-decoration: underline'>This is a list of the duties:</h1>\n<ul>\n")
-        for duty in duties_list:
-            f.write(f"<li>{duty}</li>\n")
-        f.write(f"</ul>")
+def show_duties_in_html(user_input):
+    if user_input == "1":
+        with open("output_files/duties.html", "w") as f:
+            f.write("<h1 style='text-decoration: underline'>This is a list of the duties:</h1>\n<ul>\n")
+            for duty in duties_list:
+                f.write(f"<li>{duty}</li>\n")
+            f.write(f"</ul>")
+    elif user_input == "2":
+        with open("output_files/bootCampDuties.html", "w") as f:
+            f.write("<h1 style='text-decoration: underline'>This is a list of the duties for bootcamp:</h1>\n<ul>\n")
+            for duty in bootcamp_duties:
+                f.write(f"<li>{duties_list[duty]}</li>\n")
+            f.write(f"</ul>")
 
 if __name__=="__main__":
     user_input = input("""
     Welcome to apprentice themes!\n
     Press (1) to list all the duties\n
+    Press (2) to list all duties\n
     Enter your choice:
     """)
-    if user_input == '1':
-        show_duties_in_html()
+    show_duties_in_html(user_input)
