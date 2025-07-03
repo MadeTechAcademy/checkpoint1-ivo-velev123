@@ -27,3 +27,7 @@ def test_output_to_html():
     show_duties_in_html("6")
     with open("comparison_files/assembleComparison.html", "r") as comparison_file, open("output_files/assembleDuties.html") as output_file:
         assert comparison_file.readlines() == output_file.readlines()
+
+    show_duties_in_html("7")
+    with open("comparison_files/callSecurityComparison.html", "r") as comparison_file, open("output_files/callSecurityDuties.html") as output_file:
+        assert comparison_file.readlines() == output_file.readlines()
