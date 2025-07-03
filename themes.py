@@ -18,7 +18,7 @@ duties_list = [
 #         print("{0}\n".format(duty))
 
 def show_duties_in_html():
-    with open("comparison_files/duties.html", "w") as f:
+    with open("output_files/duties.html", "w") as f:
         f.write("<h1 style='text-decoration: underline'>This is a list of the duties:</h1>\n<ul>\n")
         for duty in duties_list:
             f.write(f"<li>{duty}</li>\n")
