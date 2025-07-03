@@ -27,25 +27,31 @@ themes_list = ["duties","bootcamp", "automate", "houstonPrepareToLaunch", "going
 
 # def show_duties_list():
 #     for duty in duties_list:
-#         print("{0}\n".format(duty))
+#         print("{0}\n".format(duty)
+
+def make_title(theme):
+    title = ""
+    for char in theme:
+        if char.isupper():
+            title += " " + char.lower()
+        else:
+            title += char.lower()
+    
+    return title
 
 def show_duties_in_html(user_input):
     selected_theme = int(user_input) - 1
     with open(f"output_files/{themes_list[selected_theme]}.html", "w") as f:
         if selected_theme > 0:
             if selected_theme == 3 or selected_theme == 4 or selected_theme == 6:
-                title = ""
-                for char in themes_list[selected_theme]:
-                    if char.isupper():
-                        title += " " + char.lower()
-                    else:
-                        title += char
+                title = make_title(themes_list[selected_theme])
                 f.write(f"<h1 style='text-decoration: underline'>This is a list of the duties for {title}:</h1>\n<ul>\n")
             else:
                 f.write(f"<h1 style='text-decoration: underline'>This is a list of the duties for {themes_list[selected_theme]}:</h1>\n<ul>\n")
         else:
             f.write(f"<h1 style='text-decoration: underline'>This is a list of the {themes_list[selected_theme]}:</h1>\n<ul>\n")
-        for duty in duties_dictionary[themes_list[selected_theme]]:
+        dict_key = themes_list[selected_theme]
+        for duty in duties_dictionary[dict_key]:
             f.write(f"<li>{duties_list[duty]}</li>\n")
         f.write("</ul>")
         
