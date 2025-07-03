@@ -77,6 +77,9 @@ if __name__=="__main__":
     Press (2) to list bootcamp duties\n
     Press (3) to list automate duties\n
     Press (4) to list houston duties\n
+    Press (5) to list going deeper duties\n
+    Press (6) to list assemble duties\n
+    Press (7) to list call security duties\n
     Enter your choice:
     """)
     show_duties_in_html(user_input)
