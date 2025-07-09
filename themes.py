@@ -1,5 +1,6 @@
 import webbrowser
 import os
+import html2text
 
 duties_list = [
     "Duty 1 Script and code in at least one general purpose language and at least one domain-specific language to orchestrate infrastructure, follow test driven development and ensure appropriate test coverage.",
@@ -107,6 +108,15 @@ def open_in_browser(user_input, user_input2):
         filename = 'file:///'+os.getcwd()+'/' + f'output_files/{themes_list[selected_theme]}.html'
         webbrowser.open_new_tab(filename)
 
+def show_duties_in_terminal(user_input, user_input2):
+    if user_input2 == "2":
+        selected_theme = int(user_input) - 1
+        with open(f"output_files/{themes_list[selected_theme]}.html", "r") as f:
+            html = f.read()
+            text = html2text.html2text(html)
+            print(text)
+
+
 if __name__=="__main__":
     user_input = input("""
     Welcome to apprentice themes!\n
@@ -125,3 +135,4 @@ if __name__=="__main__":
     Press (2) to exit
     """)
     open_in_browser(user_input, user_input2)
+    show_duties_in_terminal(user_input, user_input2)
