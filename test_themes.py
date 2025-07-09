@@ -34,3 +34,9 @@ def test_output_to_html():
 
 def test_title_maker():
     assert make_title("goingDeeper") == "going deeper"
+
+def test_terminal_output(capsys):
+    show_duties_in_terminal("5")
+    output = capsys.readouterr()
+    assert "This is a list for the duties of going deeper:" in output.out
+    assert "Duty 11 Keep up with cutting edge by committing to continual training and development - utilise web resources for self-learning; horizon scanning; active membership of professional bodies such as Meetup Groups; subscribe to relevant publications." in output.out
