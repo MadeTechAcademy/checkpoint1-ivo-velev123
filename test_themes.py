@@ -38,5 +38,5 @@ def test_title_maker():
 def test_terminal_output(capsys):
     show_duties_in_terminal("5", "2")
     output = capsys.readouterr()
-    assert "# This is a list for the duties of going deeper:" in output.out
-    assert "* Duty 11 Keep up with cutting edge by committing to continual training and development - utilise web resources for self-learning; horizon scanning; active membership of professional bodies such as Meetup Groups; subscribe to relevant publications." in output.out
+    comparison = output.out.replace("\n", "")
+    assert " This is a list of the duties for going deeper:  * Duty 11 Keep up with cutting edge by committing to continual training and development - utilise web resources for self-learning; horizon scanning; active membership of professional bodies such as Meetup Groups; subscribe to relevant publications." in comparison
