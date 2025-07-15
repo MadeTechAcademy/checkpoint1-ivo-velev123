@@ -114,14 +114,16 @@ def make_template(user_input, user_input2):
 
     template = env.get_template("template.html")
     rendered_template = template.render(duties=duties, duties_list=duties_list)
-    if user_input2 == 2:
+    if user_input2 == 1:
+        with open("output_files/output.html", "w") as f:
+            f.write(rendered_template)
+        open_in_browser()
+    elif user_input2 == 2:
         print(rendered_template)
 
-# def open_in_browser(user_input, user_input2):
-#     if user_input2 == "1":
-#         selected_theme = user_input - 1
-#         filename = 'file:///'+os.getcwd()+'/' + f'output_files/{themes_list[selected_theme]}.html'
-#         webbrowser.open_new_tab(filename)
+def open_in_browser():
+    filename = 'file:///'+os.getcwd()+'/' + 'output_files/output.html'
+    webbrowser.open_new_tab(filename)
 
 # def show_duties_in_terminal(user_input, user_input2):
 #     if user_input2 == "2":
