@@ -1,6 +1,6 @@
 import webbrowser
 import os
-import html2text
+# import html2text
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 duties_list = [
@@ -34,31 +34,31 @@ themes_list = ["duties","bootcamp", "automate", "houstonPrepareToLaunch", "going
 #     for duty in duties_list:
 #         print("{0}\n".format(duty)
 
-def make_title(theme):
-    title = ""
-    for char in theme:
-        if char.isupper():
-            title += " " + char.lower()
-        else:
-            title += char.lower()
+# def make_title(theme):
+#     title = ""
+#     for char in theme:
+#         if char.isupper():
+#             title += " " + char.lower()
+#         else:
+#             title += char.lower()
     
-    return title
+#     return title
 
-def show_duties_in_html(user_input):
-    selected_theme = user_input - 1
-    with open(f"output_files/{themes_list[selected_theme]}.html", "w") as f:
-        if selected_theme > 0:
-            if selected_theme == 3 or selected_theme == 4 or selected_theme == 6:
-                title = make_title(themes_list[selected_theme])
-                f.write(f"<h1 style='text-decoration: underline'>This is a list of the duties for {title}:</h1>\n<ul>\n")
-            else:
-                f.write(f"<h1 style='text-decoration: underline'>This is a list of the duties for {themes_list[selected_theme]}:</h1>\n<ul>\n")
-        else:
-            f.write(f"<h1 style='text-decoration: underline'>This is a list of the {themes_list[selected_theme]}:</h1>\n<ul>\n")
-        dict_key = themes_list[selected_theme]
-        for duty in duties_dictionary[dict_key]:
-            f.write(f"<li>{duties_list[duty]}</li>\n")
-        f.write("</ul>")
+# def show_duties_in_html(user_input):
+#     selected_theme = user_input - 1
+#     with open(f"output_files/{themes_list[selected_theme]}.html", "w") as f:
+#         if selected_theme > 0:
+#             if selected_theme == 3 or selected_theme == 4 or selected_theme == 6:
+#                 title = make_title(themes_list[selected_theme])
+#                 f.write(f"<h1 style='text-decoration: underline'>This is a list of the duties for {title}:</h1>\n<ul>\n")
+#             else:
+#                 f.write(f"<h1 style='text-decoration: underline'>This is a list of the duties for {themes_list[selected_theme]}:</h1>\n<ul>\n")
+#         else:
+#             f.write(f"<h1 style='text-decoration: underline'>This is a list of the {themes_list[selected_theme]}:</h1>\n<ul>\n")
+#         dict_key = themes_list[selected_theme]
+#         for duty in duties_dictionary[dict_key]:
+#             f.write(f"<li>{duties_list[duty]}</li>\n")
+#         f.write("</ul>")
         
     # if user_input == "1":
     #     with open("output_files/duties.html", "w") as f:

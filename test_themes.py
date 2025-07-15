@@ -33,8 +33,8 @@ def test_duties_list():
 #     with open("comparison_files/callSecurityComparison.html", "r") as comparison_file, open("output_files/callSecurity.html") as output_file:
 #         assert comparison_file.readlines() == output_file.readlines()
 
-def test_title_maker():
-    assert make_title("goingDeeper") == "going deeper"
+# def test_title_maker():
+#     assert make_title("goingDeeper") == "going deeper"
 
 # def test_terminal_output(capsys):
 #     show_duties_in_terminal("5", "2")
