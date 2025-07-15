@@ -48,3 +48,11 @@ def test_make_template(capsys):
     assert """# This is a list of the duties:
 
   * Duty 11 Keep up with cutting edge by committing to continual training and development - utilise web resources for self-learning; horizon scanning; active membership of professional bodies such as Meetup Groups; subscribe to relevant publications.""" in output.out
+    
+    make_template(3, 2)
+    output = capsys.readouterr()
+    assert """# This is a list of the duties:
+
+  * Duty 5 Build and operate a Continuous Integration (CI) capability, employing version control of source code and related artefacts
+  * Duty 7 Provision cloud infrastructure using APIs, continually improve infrastructure-as-code, considering use of industry leading technologies as they become available (e.g. Serverless, Containers).
+  * Duty 10 Implement a good coverage of monitoring (metrics, logs), ensuring that alerts are visible, tuneable and actionable.""" in output.out
