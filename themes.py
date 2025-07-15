@@ -1,7 +1,7 @@
 import webbrowser
 import os
 import html2text
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment, PackageLoader, select_autoescape
 
 duties_list = [
     "Duty 1 Script and code in at least one general purpose language and at least one domain-specific language to orchestrate infrastructure, follow test driven development and ensure appropriate test coverage.",
@@ -103,18 +103,8 @@ def show_duties_in_html(user_input):
     #             f.write(f"<li>{duties_list[duty]}</li>\n")
     #         f.write("</ul>")
 
-def make_template(user_input):
-    env = Environment(loader=FileSystemLoader("output_files/"))
-    template = env.get_template('template.html')
-    selected_theme = themes_list[int(user_input) - 1]
-
-    context = {
-        "duties_numbers" : duties_dictionary[selected_theme],
-        "duties" : duties_list,
-    }
-    
-    rendered_template = template.render(context)
-    print(rendered_template)
+def make_template():
+    pass
 
 def open_in_browser(user_input, user_input2):
     if user_input2 == "1":

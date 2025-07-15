@@ -1,4 +1,4 @@
-from themes import duties_list, show_duties_in_html, make_title, show_duties_in_terminal
+from themes import duties_list, show_duties_in_html, make_title, show_duties_in_terminal, make_template
 from jinja2 import Environment, FileSystemLoader
 
 def test_duties_list():
@@ -42,12 +42,12 @@ def test_terminal_output(capsys):
     comparison = output.out.replace("\n", "")
     assert " This is a list of the duties for going deeper:  * Duty 11 Keep up with cutting edge by committing to continual training and development - utilise web resources for self-learning; horizon scanning; active membership of professional bodies such as Meetup Groups; subscribe to relevant publications." in comparison
 
-def test_templating_output():
-    env = Environment(loader=FileSystemLoader("output_files/"))
-    template = env.get_template('template.html')
-    context = {"theme" : "goingDeeper"}
-    output = template.render(context)
-
-    with open("comparison_files/goingDeeperComparison.html", "r") as f:
-        comparison_file = f.read()
-        assert comparison_file == output
+def test_make_template(capsys):
+    make_template(5)
+    output = capsys.readouterr()
+    assert """<h1 style='text-decoration: underline'>This is a list of the duties:</h1>
+<ul>
+    
+        <li>Duty 11 Keep up with cutting edge by committing to continual training and development - utilise web resources for self-learning; horizon scanning; active membership of professional bodies such as Meetup Groups; subscribe to relevant publications.</li>
+    
+</ul>""" in output.out
