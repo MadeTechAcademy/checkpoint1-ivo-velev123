@@ -1,4 +1,4 @@
-from themes import duties_list, show_duties_in_html, make_title, show_duties_in_terminal, make_template
+from themes import duties_list, show_duties_in_html, make_title, make_template
 from jinja2 import Environment, FileSystemLoader
 
 def test_duties_list():
@@ -36,14 +36,14 @@ def test_duties_list():
 def test_title_maker():
     assert make_title("goingDeeper") == "going deeper"
 
-def test_terminal_output(capsys):
-    show_duties_in_terminal("5", "2")
-    output = capsys.readouterr()
-    comparison = output.out.replace("\n", "")
-    assert " This is a list of the duties for going deeper:  * Duty 11 Keep up with cutting edge by committing to continual training and development - utilise web resources for self-learning; horizon scanning; active membership of professional bodies such as Meetup Groups; subscribe to relevant publications." in comparison
+# def test_terminal_output(capsys):
+#     show_duties_in_terminal("5", "2")
+#     output = capsys.readouterr()
+#     comparison = output.out.replace("\n", "")
+#     assert " This is a list of the duties for going deeper:  * Duty 11 Keep up with cutting edge by committing to continual training and development - utilise web resources for self-learning; horizon scanning; active membership of professional bodies such as Meetup Groups; subscribe to relevant publications." in comparison
 
 def test_make_template(capsys):
-    make_template(5)
+    make_template(5, 2)
     output = capsys.readouterr()
     assert """<h1 style='text-decoration: underline'>This is a list of the duties:</h1>
 <ul>

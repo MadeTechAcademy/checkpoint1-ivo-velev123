@@ -1,7 +1,7 @@
 import webbrowser
 import os
 import html2text
-from jinja2 import Environment, PackageLoader, select_autoescape
+from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 duties_list = [
     "Duty 1 Script and code in at least one general purpose language and at least one domain-specific language to orchestrate infrastructure, follow test driven development and ensure appropriate test coverage.",
@@ -45,7 +45,7 @@ def make_title(theme):
     return title
 
 def show_duties_in_html(user_input):
-    selected_theme = int(user_input) - 1
+    selected_theme = user_input - 1
     with open(f"output_files/{themes_list[selected_theme]}.html", "w") as f:
         if selected_theme > 0:
             if selected_theme == 3 or selected_theme == 4 or selected_theme == 6:
@@ -103,26 +103,37 @@ def show_duties_in_html(user_input):
     #             f.write(f"<li>{duties_list[duty]}</li>\n")
     #         f.write("</ul>")
 
-def make_template():
-    pass
+def make_template(user_input, user_input2):
+    env = Environment(
+        loader=FileSystemLoader("templates"),
+        autoescape=select_autoescape()
+    )
+    selected_theme = themes_list[user_input - 1]
 
-def open_in_browser(user_input, user_input2):
-    if user_input2 == "1":
-        selected_theme = int(user_input) - 1
-        filename = 'file:///'+os.getcwd()+'/' + f'output_files/{themes_list[selected_theme]}.html'
-        webbrowser.open_new_tab(filename)
+    duties = duties_dictionary[selected_theme]
 
-def show_duties_in_terminal(user_input, user_input2):
-    if user_input2 == "2":
-        selected_theme = int(user_input) - 1
-        with open(f"output_files/{themes_list[selected_theme]}.html", "r") as f:
-            html = f.read()
-            text = html2text.html2text(html)
-            print(text)
+    template = env.get_template("template.html")
+    rendered_template = template.render(duties=duties, duties_list=duties_list)
+    if user_input2 == 2:
+        print(rendered_template)
+
+# def open_in_browser(user_input, user_input2):
+#     if user_input2 == "1":
+#         selected_theme = user_input - 1
+#         filename = 'file:///'+os.getcwd()+'/' + f'output_files/{themes_list[selected_theme]}.html'
+#         webbrowser.open_new_tab(filename)
+
+# def show_duties_in_terminal(user_input, user_input2):
+#     if user_input2 == "2":
+#         selected_theme = user_input - 1
+#         with open(f"output_files/{themes_list[selected_theme]}.html", "r") as f:
+#             html = f.read()
+#             text = html2text.html2text(html)
+#             print(text)
 
 
 if __name__=="__main__":
-    user_input = input("""
+    user_input = int(input("""
     Welcome to apprentice themes!\n
     Press (1) to list all the duties\n
     Press (2) to list bootcamp duties\n
@@ -132,11 +143,13 @@ if __name__=="__main__":
     Press (6) to list assemble duties\n
     Press (7) to list call security duties\n
     Enter your choice:
-    """)
-    show_duties_in_html(user_input)
-    user_input2 = input("""
+    """))
+    # show_duties_in_html(user_input)
+    user_input2 = int(input("""
     Press (1) to view the file in the browser\n
-    Press (2) to exit
-    """)
-    open_in_browser(user_input, user_input2)
-    show_duties_in_terminal(user_input, user_input2)
+    Press (2) to view the file in the terminal\n
+    Press (3) to exit
+    """))
+    # open_in_browser(user_input, user_input2)
+    make_template(user_input, user_input2)
+    # show_duties_in_terminal(user_input, user_input2)
