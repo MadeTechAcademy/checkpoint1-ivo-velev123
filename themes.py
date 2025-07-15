@@ -1,6 +1,6 @@
 import webbrowser
 import os
-# import html2text
+import html2text
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 duties_list = [
@@ -119,7 +119,8 @@ def make_template(user_input, user_input2):
             f.write(rendered_template)
         open_in_browser()
     elif user_input2 == 2:
-        print(rendered_template)
+        text = html2text.html2text(rendered_template)
+        print(text)
 
 def open_in_browser():
     filename = 'file:///'+os.getcwd()+'/' + 'output_files/output.html'

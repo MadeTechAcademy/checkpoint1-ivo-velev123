@@ -1,4 +1,4 @@
-from themes import duties_list, show_duties_in_html, make_title, make_template
+from themes import duties_list, make_template
 from jinja2 import Environment, FileSystemLoader
 
 def test_duties_list():
@@ -45,9 +45,6 @@ def test_duties_list():
 def test_make_template(capsys):
     make_template(5, 2)
     output = capsys.readouterr()
-    assert """<h1 style='text-decoration: underline'>This is a list of the duties:</h1>
-<ul>
-    
-        <li>Duty 11 Keep up with cutting edge by committing to continual training and development - utilise web resources for self-learning; horizon scanning; active membership of professional bodies such as Meetup Groups; subscribe to relevant publications.</li>
-    
-</ul>""" in output.out
+    assert """# This is a list of the duties:
+
+  * Duty 11 Keep up with cutting edge by committing to continual training and development - utilise web resources for self-learning; horizon scanning; active membership of professional bodies such as Meetup Groups; subscribe to relevant publications.""" in output.out
